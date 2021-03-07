@@ -10,7 +10,7 @@ const MainContent = props => {
     { id: 2, text: 'Walk the dog', done: true },
     { id: 3, text: 'Watch react course', done: true }
   ];
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(initialTodos);
 
   useEffect(() => {
     window.localStorage.setItem('todos', initialTodos);
