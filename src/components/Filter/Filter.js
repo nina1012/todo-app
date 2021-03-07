@@ -8,15 +8,29 @@ const Filter = ({ darkMode, handleSubmit, addTodo }) => {
   };
   const className = `filter-box ${darkMode ? 'dark' : 'light'}`;
 
+  const createNewTodo = e => {
+    if (e.keyCode === 13) {
+      addTodo({
+        text: e.target.value,
+        done: false
+      });
+      e.target.value = '';
+    }
+  };
+
   return (
-    <form className={className} onSubmit={e => addTodo(e)}>
+    <div className={className}>
       <Checkbox
         darkMode={darkMode}
         checked={checked}
         toggleChecked={toggleChecked}
       />
-      <input type="text" placeholder="Create a new todo..." />
-    </form>
+      <input
+        onKeyUp={e => createNewTodo(e)}
+        type="text"
+        placeholder="Create a new todo..."
+      />
+    </div>
   );
 };
 
