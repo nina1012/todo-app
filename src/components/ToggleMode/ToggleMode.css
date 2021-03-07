@@ -1,0 +1,14 @@
+h1 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: 1rem;
+}
+.toggle-mode-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle-mode-btn:hover {
+  cursor: pointer;
+}

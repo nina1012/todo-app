@@ -1,0 +1,29 @@
+.filter-box {
+  background-color: var(--very-dark-grayish-blue);
+  display: flex;
+  border-radius: 0.7rem;
+  margin: 4rem 0 2rem;
+  border: 1px solid transparent;
+  font-size: 2rem;
+}
+
+.filter-box.light {
+  background-color: var(--very-light-gray);
+}
+
+.filter-box.dark {
+  background-color: var(--very-dark-grayish-blue);
+}
+
+input[type='text'] {
+  background-color: transparent;
+  border: none;
+  padding: 1.5rem 0;
+  outline: none;
+  font-family: inherit;
+  color: white;
+}
+
+input[type='text']::placeholder {
+  font-size: 1.6rem;
+}
