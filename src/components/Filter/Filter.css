@@ -5,14 +5,19 @@
   margin: 4rem 0 2rem;
   border: 1px solid transparent;
   font-size: 2rem;
+  width: 100%;
 }
 
-.filter-box.light {
+.filter-box.light,
+.filter-box.light input {
   background-color: var(--very-light-gray);
+  color: var(--very-dark-grayish-blue);
 }
 
-.filter-box.dark {
-  background-color: var(--very-dark-grayish-blue);
+.filter-box.dark,
+.filter-box.dark input {
+  background-color: var(--very-dark-desaturated-blue);
+  color: var(--very-light-gray);
 }
 
 input[type='text'] {
@@ -21,7 +26,7 @@ input[type='text'] {
   padding: 1.5rem 0;
   outline: none;
   font-family: inherit;
-  color: white;
+  width: inherit;
 }
 
 input[type='text']::placeholder {

@@ -7,6 +7,7 @@
   align-items: center;
   margin: 1.5rem 3.5rem;
   padding: 1rem;
+  border: 1px solid var(--very-dark-grayish-blue);
 }
 
 .checkbox:hover {
@@ -21,13 +22,8 @@
   background-origin: border-box;
 }
 
-.checkbox.dark:hover {
-  border: 1px solid transparent;
-  background-image: linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%)),
-    linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  border-image: 20% round;
+.checkbox.light {
+  border: 1px solid var(--light-grayish-blue);
 }
 
 .checkbox.dark {
@@ -35,7 +31,4 @@
 }
 .checkbox.dark:hover {
   background-color: var(--very-dark-desaturated-blue);
-}
-.checkbox.light {
-  border: 1px solid var(--light-grayish-blue);
 }

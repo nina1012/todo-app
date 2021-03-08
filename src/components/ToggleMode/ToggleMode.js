@@ -1,14 +1,11 @@
 import './ToggleMode.css';
 const ToggleMode = ({ changeMode, darkMode }) => {
+  const icon = `./images/icon-${darkMode ? 'sun' : 'moon'}.svg`;
   return (
     <div className="toggle-mode-box">
       <h1>Todo</h1>
       <div className="toggle-mode-btn" onClick={changeMode}>
-        {darkMode ? (
-          <img src="./images/icon-sun.svg" alt="icon" />
-        ) : (
-          <img src="./images/icon-moon.svg" alt="icon" />
-        )}
+        <img src={icon} alt="icon" />
       </div>
     </div>
   );

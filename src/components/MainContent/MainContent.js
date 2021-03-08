@@ -1,8 +1,9 @@
 import './MainContent.css';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ToggleMode from '../ToggleMode/ToggleMode';
 import Filter from '../Filter/Filter';
+import Todos from '../Todos/Todos';
 
 const MainContent = props => {
   const initialTodos = [
@@ -10,11 +11,7 @@ const MainContent = props => {
     { id: 2, text: 'Walk the dog', done: true },
     { id: 3, text: 'Watch react course', done: true }
   ];
-  const [todos, setTodos] = useState(initialTodos);
-
-  useEffect(() => {
-    window.localStorage.setItem('todos', initialTodos);
-  });
+  const [todos, setTodos] = useState(initialTodos || []);
 
   const randomId = () => {
     const id = Math.floor(Math.random() * 1000);
@@ -40,18 +37,28 @@ const MainContent = props => {
     setTodos(updatedTodos);
   };
 
+  const updateCheckTodo = id => {
+    const updatedTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.done = !todo.done;
+        return todo;
+      }
+      return todo;
+    });
+    setTodos(todos => updatedTodos);
+  };
+  console.log(todos);
   const className = `main ${props.darkMode ? 'dark' : 'light'}`;
   return (
     <main className={className}>
       <ToggleMode {...props} />
       <Filter addTodo={addTodo} {...props} />
-      <ul>
-        {todos.map(todo => (
-          <li onClick={() => removeTodo(todo.id)} key={todo.id}>
-            {todo.text}
-          </li>
-        ))}
-      </ul>
+      <Todos
+        todos={todos}
+        removeTodo={removeTodo}
+        updateCheckTodo={updateCheckTodo}
+        mode={props.darkMode}
+      />
     </main>
   );
 };

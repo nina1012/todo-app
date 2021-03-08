@@ -1,0 +1,22 @@
+.todos {
+  display: grid;
+  grid-template-rows: auto;
+  border-radius: 0.7rem;
+  font-size: 1.6rem;
+  overflow: hidden;
+}
+
+.todos.light {
+  /* background-color: var(--very-light-gray); */
+  background-color: white;
+  color: var(--very-dark-grayish-blue);
+  box-shadow: 0px 0px 1rem 0 rgba(0, 0, 0, 0.1),
+    0px 0.5rem 1.5rem rgba(255, 255, 255, 0.9);
+}
+
+.todos.dark {
+  background-color: var(--very-dark-desaturated-blue);
+  color: var(--light-grayish-blue);
+  box-shadow: 0px 1rem 2rem 0 rgba(0, 0, 0, 0.7),
+    0px 0.5rem 1.5rem rgba(255, 255, 255, 0.1);
+}

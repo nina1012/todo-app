@@ -1,0 +1,40 @@
+.todo {
+  display: grid;
+  grid-template-columns: 9.3rem 1fr 10rem;
+  align-items: center;
+  border-bottom: 0.5px solid var(--very-dark-grayish-blue);
+  position: relative;
+}
+
+.todos.light > .todo {
+  border-bottom-color: var(--light-grayish-blue-hover);
+}
+
+.todo:last-of-type {
+  border-bottom: none;
+}
+
+.todo-text {
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cross {
+  position: relative;
+  font-weight: 400;
+  font-size: 1rem;
+  z-index: 10;
+  justify-self: center;
+}
+.todo:hover .cross {
+  visibility: visible;
+  cursor: pointer;
+}
+
+.cross:hover .cross {
+  font-weight: 600;
+  color: red;
+}

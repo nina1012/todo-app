@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Filter.css';
 import Checkbox from '../Checkbox/Checkbox';
-const Filter = ({ darkMode, handleSubmit, addTodo }) => {
+const Filter = ({ darkMode, addTodo }) => {
   const [checked, setChecked] = useState(false);
   const toggleChecked = () => {
     setChecked(checked => !checked);

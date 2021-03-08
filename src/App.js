@@ -10,7 +10,7 @@ function App() {
   };
 
   useEffect(() => {
-    const color = darkMode ? 'var(--very-dark-blue)' : 'var(--very-light-gra)';
+    const color = darkMode ? 'var(--very-dark-blue)' : 'var(--very-light-gray)';
     document.body.style.backgroundColor = color;
   }, [darkMode]);
 
