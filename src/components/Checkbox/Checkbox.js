@@ -1,15 +1,17 @@
 import './Checkbox.css';
 const Checkbox = ({
+  mode,
   darkMode,
   checked,
-  toggleChecked,
+  // toggleChecked,
   done,
   updateCheckTodo,
   id
 }) => {
-  const mode = `checkbox ${checked ? 'checked' : ''} ${
-    darkMode ? 'dark' : 'light'
-  }`;
+  const className = `checkbox ${mode || darkMode ? 'dark' : 'light'} ${
+    checked ? 'checked' : ''
+  }
+  `;
 
   const rainboxBg = {
     border: '1px solid transparent',
@@ -22,9 +24,8 @@ const Checkbox = ({
 
   return (
     <div
-      className={mode}
+      className={className}
       onClick={() => {
-        // toggleChecked();
         updateCheckTodo(id);
       }}
       style={done ? rainboxBg : {}}

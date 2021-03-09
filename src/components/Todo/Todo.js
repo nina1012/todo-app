@@ -10,7 +10,12 @@ const Todo = ({ text, id, done, removeTodo, updateCheckTodo, mode }) => {
 
   return (
     <div className="todo" style={done ? doneStyle : {}}>
-      <Checkbox done={done} updateCheckTodo={updateCheckTodo} id={id} />
+      <Checkbox
+        done={done}
+        updateCheckTodo={updateCheckTodo}
+        id={id}
+        mode={mode}
+      />
       <div
         className="todo-text"
         onClick={() => {

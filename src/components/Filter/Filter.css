@@ -27,6 +27,7 @@ input[type='text'] {
   outline: none;
   font-family: inherit;
   width: inherit;
+  font-size: 2rem;
 }
 
 input[type='text']::placeholder {

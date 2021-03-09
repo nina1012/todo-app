@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.todo:hover {
+  cursor: pointer;
+}
+
 .todos.light > .todo {
   border-bottom-color: var(--light-grayish-blue-hover);
 }

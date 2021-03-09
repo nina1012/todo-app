@@ -47,12 +47,12 @@ const MainContent = props => {
     });
     setTodos(todos => updatedTodos);
   };
-  console.log(todos);
+ 
   const className = `main ${props.darkMode ? 'dark' : 'light'}`;
   return (
     <main className={className}>
       <ToggleMode {...props} />
-      <Filter addTodo={addTodo} {...props} />
+      <Filter addTodo={addTodo} {...props} updateCheckTodo={updateCheckTodo} />
       <Todos
         todos={todos}
         removeTodo={removeTodo}
