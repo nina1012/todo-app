@@ -8,3 +8,9 @@
   width: 100%;
   height: 100%;
 }
+
+@media only screen and (max-width: 650px) {
+  .hero {
+    height: 25rem;
+  }
+}

@@ -5,7 +5,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1.5rem 3.5rem;
+  /* margin: 1.5rem 3.5rem;
+   */
+  margin: 2.5rem 2rem;
   padding: 1rem;
   border: 1px solid var(--very-dark-grayish-blue);
   background-color: red;
@@ -35,6 +37,8 @@
 
 .checkbox.dark:hover:before {
   background-color: var(--very-dark-desaturated-blue);
+  width: 1.6rem;
+  height: 1.6rem;
 }
 .checkbox.light:hover:before {
   background-color: var(--very-light-gray);

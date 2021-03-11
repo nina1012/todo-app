@@ -7,7 +7,7 @@ const Filter = ({ darkMode, addTodo, updateCheckTodo }) => {
     setChecked(checked => !checked);
   };
   const className = `filter-box ${darkMode ? 'dark' : 'light'}`;
-  console.log(darkMode);
+
   const createNewTodo = e => {
     if (e.keyCode === 13) {
       addTodo({

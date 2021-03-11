@@ -31,5 +31,11 @@ input[type='text'] {
 }
 
 input[type='text']::placeholder {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+}
+
+@media only screen and (max-width: 650px) {
+  .filter-box {
+    margin-top: 2rem;
+  }
 }

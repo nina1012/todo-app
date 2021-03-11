@@ -7,11 +7,15 @@ import Todos from '../Todos/Todos';
 
 const MainContent = props => {
   const initialTodos = [
-    { id: 1, text: 'Do the dishes', done: false },
-    { id: 2, text: 'Walk the dog', done: true },
-    { id: 3, text: 'Watch react course', done: true }
+    { id: 1, text: 'Complete online JavaScript course', done: true },
+    { id: 2, text: 'Jog around the park 3x', done: false },
+    { id: 3, text: '10 minutes meditation', done: false },
+    { id: 4, text: 'Read for 1 hour', done: false },
+    { id: 5, text: 'Pick up groceries', done: false },
+    { id: 6, text: 'Complete Todo App on Frontend Mentor', done: false }
   ];
   const [todos, setTodos] = useState(initialTodos || []);
+  const [filterDoneTodos, setFilterDoneTodos] = useState(null);
 
   const randomId = () => {
     const id = Math.floor(Math.random() * 1000);
@@ -47,18 +51,39 @@ const MainContent = props => {
     });
     setTodos(todos => updatedTodos);
   };
- 
+
+  const clearUndone = () => {
+    const undone = todos.filter(todo => !todo.done);
+    setTodos(todos => undone);
+  };
+
+  const filter = () => {
+    if (filterDoneTodos == null) {
+      return todos;
+    }
+    return todos.filter(todo => todo.done === filterDoneTodos);
+  };
+
+  const handleFilter = value => {
+    setFilterDoneTodos(filterDoneTodos => value);
+  };
+
   const className = `main ${props.darkMode ? 'dark' : 'light'}`;
+  // filtered todos: all, active or completed
+  const filteredTodos = filter();
   return (
     <main className={className}>
       <ToggleMode {...props} />
       <Filter addTodo={addTodo} {...props} updateCheckTodo={updateCheckTodo} />
       <Todos
-        todos={todos}
+        todos={filteredTodos}
         removeTodo={removeTodo}
         updateCheckTodo={updateCheckTodo}
         mode={props.darkMode}
+        clearUndone={clearUndone}
+        handleFilter={handleFilter}
       />
+      <div className="drag-drop">Drag and drop to reorder list</div>
     </main>
   );
 };
