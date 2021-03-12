@@ -28,7 +28,7 @@ const Todos = ({ todos, removeTodo, ...rest }) => {
         <div className="left edge">
           <span>{todos.length} items left</span>
         </div>
-        <hr />
+        <div className="divider"></div>
         <div className="filters">
           <span
             className="active"
