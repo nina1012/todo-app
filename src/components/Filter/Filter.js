@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import './Filter.css';
 import Checkbox from '../Checkbox/Checkbox';
@@ -33,6 +34,12 @@ const Filter = ({ darkMode, addTodo, updateCheckTodo }) => {
       />
     </div>
   );
+};
+
+Filter.propTypes = {
+  darkMode: PropTypes.bool,
+  addTodo: PropTypes.func,
+  updateCheckTodo: PropTypes.func
 };
 
 export default Filter;

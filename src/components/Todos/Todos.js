@@ -1,9 +1,19 @@
 import './Todos.css';
 import Todo from '../Todo/Todo';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import PropTypes from 'prop-types';
 
-const Todos = ({ todos, removeTodo, ...rest }) => {
-  const className = `todos ${rest.mode ? 'dark' : 'light'}`;
-  const box = `settings-box ${rest.mode ? 'dark' : 'light'}`;
+const Todos = ({
+  todos,
+  removeTodo,
+  mode,
+  handleOnDragEnd,
+  updateCheckTodo,
+  handleFilter,
+  clearUndone
+}) => {
+  const className = `todos ${mode ? 'dark' : 'light'}`;
+  const box = `settings-box ${mode ? 'dark' : 'light'}`;
 
   const activeState = e => {
     const spans = document.querySelectorAll('.filters > span');
@@ -12,17 +22,29 @@ const Todos = ({ todos, removeTodo, ...rest }) => {
   };
   return (
     <div className={className}>
-      <>
-        {todos.map(todo => (
-          <Todo
-            updateCheckTodo={rest.updateCheckTodo}
-            key={todo.id}
-            {...todo}
-            removeTodo={removeTodo}
-            mode={rest.mode}
-          />
-        ))}
-      </>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="list">
+          {provided => (
+            <ul
+              className="list"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {todos.map((todo, index) => (
+                <Todo
+                  updateCheckTodo={updateCheckTodo}
+                  key={todo.id}
+                  {...todo}
+                  removeTodo={removeTodo}
+                  mode={mode}
+                  index={index}
+                />
+              ))}
+              {provided.placeholder}
+            </ul>
+          )}
+        </Droppable>
+      </DragDropContext>
 
       <div className={box}>
         <div className="left edge">
@@ -35,7 +57,7 @@ const Todos = ({ todos, removeTodo, ...rest }) => {
             id="1"
             onClick={e => {
               activeState(e);
-              rest.handleFilter(null);
+              handleFilter(null);
             }}
           >
             All
@@ -44,7 +66,7 @@ const Todos = ({ todos, removeTodo, ...rest }) => {
             id="2"
             onClick={e => {
               activeState(e);
-              rest.handleFilter(false);
+              handleFilter(false);
             }}
           >
             Active
@@ -53,18 +75,28 @@ const Todos = ({ todos, removeTodo, ...rest }) => {
             id="3"
             onClick={e => {
               activeState(e);
-              rest.handleFilter(true);
+              handleFilter(true);
             }}
           >
             Completed
           </span>
         </div>
         <div className="right edge clear">
-          <span onClick={rest.clearUndone}>Clear Completed</span>
+          <span onClick={clearUndone}>Clear Completed</span>
         </div>
       </div>
     </div>
   );
+};
+
+Todos.propTypes = {
+  todos: PropTypes.array,
+  removeTodo: PropTypes.func,
+  mode: PropTypes.bool,
+  handleOnDragEnd: PropTypes.func,
+  updateCheckTodo: PropTypes.func,
+  handleFilter: PropTypes.func,
+  clearUndone: PropTypes.func
 };
 
 export default Todos;

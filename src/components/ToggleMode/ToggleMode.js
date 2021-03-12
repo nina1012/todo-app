@@ -1,4 +1,5 @@
 import './ToggleMode.css';
+import PropTypes from 'prop-types';
 const ToggleMode = ({ changeMode, darkMode }) => {
   const icon = `./images/icon-${darkMode ? 'sun' : 'moon'}.svg`;
   return (
@@ -9,6 +10,11 @@ const ToggleMode = ({ changeMode, darkMode }) => {
       </div>
     </div>
   );
+};
+
+ToggleMode.propTypes = {
+  changeMode: PropTypes.func,
+  darkMode: PropTypes.bool
 };
 
 export default ToggleMode;

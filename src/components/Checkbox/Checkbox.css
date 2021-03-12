@@ -5,12 +5,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 1.5rem 3.5rem;
-   */
   margin: 2.5rem 2rem;
   padding: 1rem;
   border: 1px solid var(--very-dark-grayish-blue);
-  background-color: red;
   position: relative;
 }
 

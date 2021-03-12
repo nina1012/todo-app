@@ -1,21 +1,21 @@
 import './MainContent.css';
+import PropTypes from 'prop-types';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ToggleMode from '../ToggleMode/ToggleMode';
 import Filter from '../Filter/Filter';
 import Todos from '../Todos/Todos';
 
-const MainContent = props => {
-  const initialTodos = [
-    { id: 1, text: 'Complete online JavaScript course', done: true },
-    { id: 2, text: 'Jog around the park 3x', done: false },
-    { id: 3, text: '10 minutes meditation', done: false },
-    { id: 4, text: 'Read for 1 hour', done: false },
-    { id: 5, text: 'Pick up groceries', done: false },
-    { id: 6, text: 'Complete Todo App on Frontend Mentor', done: false }
-  ];
-  const [todos, setTodos] = useState(initialTodos || []);
+const MainContent = ({ darkMode, ...props }) => {
+  const [todos, setTodos] = useState(
+    JSON.parse(window.localStorage.getItem('todos')) || []
+  );
+
   const [filterDoneTodos, setFilterDoneTodos] = useState(null);
+
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const randomId = () => {
     const id = Math.floor(Math.random() * 1000);
@@ -68,24 +68,46 @@ const MainContent = props => {
     setFilterDoneTodos(filterDoneTodos => value);
   };
 
-  const className = `main ${props.darkMode ? 'dark' : 'light'}`;
-  // filtered todos: all, active or completed
+  // DROP AND DRAG UPDATING FOR TODOS
+  const handleOnDragEnd = result => {
+    if (!result.destination) return;
+    const items = Array.from(todos);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setTodos(items);
+  };
+
+  const className = `main ${darkMode ? 'dark' : 'light'}`;
+
+  // FILTERED TODOS: ALL, ACTIVE OR COMPLETED
   const filteredTodos = filter();
   return (
     <main className={className}>
       <ToggleMode {...props} />
-      <Filter addTodo={addTodo} {...props} updateCheckTodo={updateCheckTodo} />
+      <Filter
+        addTodo={addTodo}
+        darkMode={darkMode}
+        {...props}
+        updateCheckTodo={updateCheckTodo}
+      />
       <Todos
+        handleOnDragEnd={handleOnDragEnd}
         todos={filteredTodos}
         removeTodo={removeTodo}
         updateCheckTodo={updateCheckTodo}
-        mode={props.darkMode}
+        mode={darkMode}
         clearUndone={clearUndone}
         handleFilter={handleFilter}
       />
       <div className="drag-drop">Drag and drop to reorder list</div>
     </main>
   );
+};
+
+MainContent.propTypes = {
+  darkMode: PropTypes.bool,
+  props: PropTypes.object
 };
 
 export default MainContent;

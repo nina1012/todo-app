@@ -36,7 +36,6 @@ body {
 }
 
 .App {
-  /* min-height: 100vh; */
   display: flex;
   justify-content: center;
   position: relative;
@@ -49,7 +48,7 @@ body {
 }
 @media only screen and (max-width: 650px) {
   .container {
-    width: 90vw;
+    width: 85vw;
   }
   body {
     font-size: 1.5rem;

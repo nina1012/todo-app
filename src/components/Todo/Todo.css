@@ -38,8 +38,3 @@
   visibility: visible;
   cursor: pointer;
 }
-
-.cross:hover .cross {
-  font-weight: 600;
-  color: red;
-}
