@@ -8,7 +8,14 @@ import Todos from '../Todos/Todos';
 
 const MainContent = ({ darkMode, ...props }) => {
   const [todos, setTodos] = useState(
-    JSON.parse(window.localStorage.getItem('todos')) || []
+    JSON.parse(window.localStorage.getItem('todos')) || [
+      { id: 1, text: 'Complete online JavaScript course', done: true },
+      { id: 2, text: 'Jog around the park 3x', done: false },
+      { id: 3, text: '10 minutes meditation', done: false },
+      { id: 4, text: 'Read for 1 hour', done: false },
+      { id: 5, text: 'Pick up groceries', done: false },
+      { id: 6, text: 'Complete Todo App on Frontend Mentor', done: false }
+    ]
   );
 
   const [filterDoneTodos, setFilterDoneTodos] = useState(null);
